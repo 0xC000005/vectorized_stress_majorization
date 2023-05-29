@@ -1,0 +1,4 @@
+/home/maxzhang/scratch/vectorized_stress_majorization/src/VectorizedStressMajorization/build/CMakeFiles/KERNELS.dir
+/home/maxzhang/scratch/vectorized_stress_majorization/src/VectorizedStressMajorization/build/CMakeFiles/test1.dir
+/home/maxzhang/scratch/vectorized_stress_majorization/src/VectorizedStressMajorization/build/CMakeFiles/edit_cache.dir
+/home/maxzhang/scratch/vectorized_stress_majorization/src/VectorizedStressMajorization/build/CMakeFiles/rebuild_cache.dir

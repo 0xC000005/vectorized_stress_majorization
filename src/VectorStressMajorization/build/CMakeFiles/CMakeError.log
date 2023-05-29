@@ -1,0 +1,60 @@
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /home/maxzhang/scratch/vectorized_stress_majorization/src/VectorizedStressMajorization/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/cvmfs/soft.computecanada.ca/gentoo/2020/usr/bin/gmake -f Makefile cmTC_7298e/fast && /cvmfs/soft.computecanada.ca/gentoo/2020/usr/bin/gmake  -f CMakeFiles/cmTC_7298e.dir/build.make CMakeFiles/cmTC_7298e.dir/build
+gmake[1]: Entering directory '/scratch/maxzhang/vectorized_stress_majorization/src/VectorizedStressMajorization/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_7298e.dir/src.c.o
+/cvmfs/soft.computecanada.ca/easybuild/software/2020/Core/gcccore/9.3.0/bin/gcc -DCMAKE_HAVE_LIBC_PTHREAD  -fPIC  -o CMakeFiles/cmTC_7298e.dir/src.c.o -c /home/maxzhang/scratch/vectorized_stress_majorization/src/VectorizedStressMajorization/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_7298e
+/cvmfs/soft.computecanada.ca/easybuild/software/2020/Core/cmake/3.23.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7298e.dir/link.txt --verbose=1
+/cvmfs/soft.computecanada.ca/easybuild/software/2020/Core/gcccore/9.3.0/bin/gcc -fPIC  -rdynamic CMakeFiles/cmTC_7298e.dir/src.c.o -o cmTC_7298e 
+CMakeFiles/cmTC_7298e.dir/src.c.o:src.c:function main: error: undefined reference to 'pthread_create'
+CMakeFiles/cmTC_7298e.dir/src.c.o:src.c:function main: error: undefined reference to 'pthread_detach'
+CMakeFiles/cmTC_7298e.dir/src.c.o:src.c:function main: error: undefined reference to 'pthread_cancel'
+CMakeFiles/cmTC_7298e.dir/src.c.o:src.c:function main: error: undefined reference to 'pthread_join'
+collect2: error: ld returned 1 exit status
+gmake[1]: *** [CMakeFiles/cmTC_7298e.dir/build.make:99: cmTC_7298e] Error 1
+gmake[1]: Leaving directory '/scratch/maxzhang/vectorized_stress_majorization/src/VectorizedStressMajorization/build/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_7298e/fast] Error 2
+
+
+Source file was:
+#include <pthread.h>
+
+static void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_cancel(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/maxzhang/scratch/vectorized_stress_majorization/src/VectorizedStressMajorization/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/cvmfs/soft.computecanada.ca/gentoo/2020/usr/bin/gmake -f Makefile cmTC_0a369/fast && /cvmfs/soft.computecanada.ca/gentoo/2020/usr/bin/gmake  -f CMakeFiles/cmTC_0a369.dir/build.make CMakeFiles/cmTC_0a369.dir/build
+gmake[1]: Entering directory '/scratch/maxzhang/vectorized_stress_majorization/src/VectorizedStressMajorization/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_0a369.dir/CheckFunctionExists.c.o
+/cvmfs/soft.computecanada.ca/easybuild/software/2020/Core/gcccore/9.3.0/bin/gcc   -fPIC -DCHECK_FUNCTION_EXISTS=pthread_create -o CMakeFiles/cmTC_0a369.dir/CheckFunctionExists.c.o -c /cvmfs/soft.computecanada.ca/easybuild/software/2020/Core/cmake/3.23.1/share/cmake-3.23/Modules/CheckFunctionExists.c
+Linking C executable cmTC_0a369
+/cvmfs/soft.computecanada.ca/easybuild/software/2020/Core/cmake/3.23.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0a369.dir/link.txt --verbose=1
+/cvmfs/soft.computecanada.ca/easybuild/software/2020/Core/gcccore/9.3.0/bin/gcc -fPIC -DCHECK_FUNCTION_EXISTS=pthread_create -rdynamic CMakeFiles/cmTC_0a369.dir/CheckFunctionExists.c.o -o cmTC_0a369  -lpthreads 
+/cvmfs/soft.computecanada.ca/gentoo/2020/usr/x86_64-pc-linux-gnu/binutils-bin/2.33.1/ld.gold: error: cannot find -lpthreads
+CMakeFiles/cmTC_0a369.dir/CheckFunctionExists.c.o:CheckFunctionExists.c:function main: error: undefined reference to 'pthread_create'
+collect2: error: ld returned 1 exit status
+gmake[1]: *** [CMakeFiles/cmTC_0a369.dir/build.make:99: cmTC_0a369] Error 1
+gmake[1]: Leaving directory '/scratch/maxzhang/vectorized_stress_majorization/src/VectorizedStressMajorization/build/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_0a369/fast] Error 2
+
+
+
